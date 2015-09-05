@@ -49,7 +49,6 @@ app.configure('development', function(){
 
 //Routes
 app.get('/', function(req, res) {
-  console.log("root called", __dirname, '/public/web/index.html');
   res.sendfile( __dirname + '/public/web/index.html');
 });
 require('./routes')(app);
