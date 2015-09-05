@@ -12,7 +12,7 @@ exports.getUsers = function(req, res){
 }
 
 exports.getGroups = function(req, res){
-	Groups.find(function(req, res){
+	Groups.find(function(err, rcd){
 		if(err) console.log(err);
 		res.setHeader('content-type', 'application/json');
 		res.send(rcd);
@@ -62,19 +62,21 @@ exports.createUser= function(req, res){
 	});
 }
 
-exports.deleteUser = function(req, res){
-
+exports.addUserToGroup = function(req, res){
+	group.find({"_id" : req.params.groupId}, function(err,rcd){
+		if(err) console.log(err);
+		
+	});
 }
 
 exports.createGroup = function(req, res){
 
-	var group = new Groups(req.body.groupName);
+	var group = new Groups(req.body);
 
 	group.save(function(err, rcd){
 		if(err) console.log(err);
 		res.setHeader('content-type', 'application/json');
 		res.send(rcd);
 	});
-
 
 }
