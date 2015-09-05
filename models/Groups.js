@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
  */
 
 var GroupSchema = new Schema({
-  name : {type : String }
+  	name : {type : String }
   }
 );
 

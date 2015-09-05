@@ -41,8 +41,7 @@ app.configure(function(){
 
 require('./db');
 
-var controllers = require('./controllers'),
-  tracker = require('./controllers/tracker');
+var controllers = require('./controllers');
 
 app.configure('development', function(){
   app.use(express.errorHandler());
