@@ -31,14 +31,14 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done) {
         process.nextTick(
                 function () {
-                        return done(null, null);
+                        return done(null, profile.id);
                 });
 
   }
 ));
 passport.serializeUser(function(user, done) {
   console.log(user);
-  done(null, 0);
+  done(null, user);
 });
 
 passport.deserializeUser(function(obj, done) {
