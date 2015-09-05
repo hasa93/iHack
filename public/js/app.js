@@ -89,8 +89,14 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
   console.log("In cards controller", $routeParams.id);
   $rootScope.dataLoaded = true;
 
+  $scope.taskLst = [];
+  var cardCounter = 0;
+  var socket = io();
+
   $scope.postTask = function(name){
     $http.post('/api/task/create', {task: name, group: $routeParams.id});
+    $scope.taskLst.push({task: name, _id: cardCounter});
+    cardCounter++;
     $rootScope.dataLoaded = true;
   };
 
@@ -98,7 +104,24 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
     ngDialog.open({ template: 'createItem.html', className: 'ngdialog-theme-default', scope: $scope});
   };
 
+  $scope.removeTask = function(id){
+    console.log(id);
+    _.remove($scope.taskLst, function(request){
+      return request._id == id;
+    });
+  }
 
+  function getTasks(id){
+    $http.get('/api/group/' + id + '/tasks').success(function(data) {
+      data.forEach(function(task){
+        $scope.taskLst.push(task);
+      });
+      console.log($scope.taskLst);
+    });
+  }
+
+  getTasks($routeParams.id);
+  
 }]);
 
 app.controller('NotificationCtrl', ['$rootScope', '$scope', '$http', 'ngDialog', function($rootScope, $scope, $http, ngDialog) {

@@ -13,9 +13,9 @@
  */
 
 var express = require('express'),
-  http = require('http'),
+  ht = require('http'),
   path = require('path'),
-  io = require('socket.io')(http);
+  io = require('socket.io');
   // engine = require('ejs-locals');
 
 var app = express();
@@ -87,8 +87,9 @@ require('./routes')(app);
 
 
 //Start server
+var http = ht.Server(app);
 
-http.createServer(app).listen(app.get('port'), function(){
+http.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
@@ -96,3 +97,9 @@ function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
 }
+
+var ioApp = io(http);
+
+ioApp.on('connection', function(socket){
+  console.log("Connected!");
+}); 

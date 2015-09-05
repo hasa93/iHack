@@ -134,6 +134,16 @@ exports.getTasks = function(req, res){
 	});
 }
 
+exports.deleteTask = function(req, res){
+	Tasks.remove({"_id" : req.params.id }, function(err, rcd){
+		if(err) console.log(err);
+
+		console.log("Removed!");
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
 exports.createGroup = function(req, res){
 
 	var group = new Groups(req.body);

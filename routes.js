@@ -25,6 +25,7 @@ app.get('/api/group/:id/tasks', group.getTasksByGroup);
 app.post('/api/task/create', group.createTask);
 app.get('/api/task/:id/remove', group.removeTask);
 app.get('/api/task/list', group.getTasks);
+app.get('/api/task/:id/delete', group.deleteTask);
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }),

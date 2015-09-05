@@ -1,4 +1,4 @@
-.page-content {
+body {
   background-color: rgb(244, 242, 242);
 }
 
@@ -531,4 +531,20 @@ Search
 
 .popup-task-name {
   top: 10px;
+}
+
+.delete-button {
+  float: right;
+  top: 50px;
+  position: relative;
+}
+
+.chat-textbox {
+  width: 80%!important;
+  height: 50px;
+  float: left;
+}
+
+.chat-button {
+  float: right;
 }
