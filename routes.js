@@ -1,6 +1,7 @@
 module.exports = function(app){
 var controllers = require('./controllers/index');
 var group = require('./controllers/ugcontroller');
+var passport = require('passport');
 
 // app.get('/group/new', controllers.newgroup);
 // app.get('/resource/new', controllers.newresource);
@@ -24,4 +25,16 @@ app.post('/api/task/create', group.createTask);
 app.get('/api/task/:id/remove', group.removeTask);
 app.get('/api/task/list', group.getTasks);
 
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }),
+  function(req, res){
+    // The request will be redirected to Google for authentication, so this
+    //     // function will not be called.
+       });
+
+app.get('/auth/google/return', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 };
