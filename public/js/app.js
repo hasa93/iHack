@@ -87,6 +87,16 @@ app.controller('LayoutCtrl', ['$rootScope', '$scope', '$http', '$location', '$wi
 app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'ngDialog', '$routeParams', function($scope, $http, $routeParams, $rootScope, ngDialog, $routeParams) {
 
   console.log("In cards controller", $routeParams.id);
+  $rootScope.dataLoaded = true;
+
+  $scope.postTask = function(name){
+    $http.post('/api/task/create', {task: name, group: $routeParams.id});
+    $rootScope.dataLoaded = true;
+  };
+
+  $scope.createTask = function () {
+    ngDialog.open({ template: 'createItem.html', className: 'ngdialog-theme-default', scope: $scope});
+  };
 
 
 }]);
@@ -264,14 +274,5 @@ app.controller('NotificationCtrl', ['$rootScope', '$scope', '$http', 'ngDialog',
   loadDeviceNotifications(loadDeviceSubscriberName);
   $rootScope.dataLoaded = true;
 
-}]);
-
-app.directive('xngFocus', [function () {
-  return function (scope, element, attrs) {
-    return scope.$watch(attrs.xngFocus, function (newValue) {
-      console.log(newValue);
-      return newValue && element[0].focus();
-    });
-  };
 }]);
 

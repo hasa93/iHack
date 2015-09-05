@@ -518,3 +518,17 @@ Search
 .typeahead-dp {
   float: left;
 }
+
+.task-status {
+  position: relative;
+  top: 35px;
+  left: 118px;
+}
+
+.add-tasks {
+  float: right;
+}
+
+.popup-task-name {
+  top: 10px;
+}

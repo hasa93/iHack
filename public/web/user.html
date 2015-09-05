@@ -1,97 +1,75 @@
 <md-content id="main" layout="vertical" layout-align="center">
 
-<div class="demo-grid-1 mdl-grid profile-grid"  ng-show="dataLoaded">
+<div flex="10"></div>
+
+<div class="demo-grid-1 mdl-grid"  ng-show="dataLoaded">
   <div class="mdl-cell mdl-cell--1-col"></div>
   <div class="mdl-cell mdl-cell--10-col">
-    <div class="mdl-card mdl-shadow--2dp profile-card">
-
-      <div class="mdl-grid user-data-grid">
-          <div class="mdl-cell mdl-cell--4-col">
-              <img class="image-border" src="http://www.gravatar.com/avatar/{{user.emailHash}}?s=200"/>
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent unfriend-button" ng-hide="loggedUserAccount" ng-click="confirmUnfriend()">Unfriend
-              </button>
-          </div>
-          <div class="mdl-cell mdl-cell--8-col">
-              <span class="profile-user-name"> {{ user.userName }} </span>
-          </div>
-      </div>
-    </div>
-
-    <div class="mdl-cell mdl-cell--6-col item-table-container">
-      <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp device-table">
-        <thead>
-          <tr>
-            <th class="mdl-data-table__cell--non-numeric drop-down-heading">
-              <span class="drop-down-header-text">ITEMS</span>
-              <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect mdl-button--colored add-device-button" ng-click="createItemPopup()" ng-show="loggedUserAccount">
-                <i class="material-icons">add</i>
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat-start="item in items" ng-init="showSensors=false">
-            <td class="mdl-data-table__cell--non-numeric drop-down-table" href="" ng-click="showSensors=!showSensors; loadDeviceList(item.device.name)">{{item.device.name}}<i class="material-icons right" ng-click="confirm(item.device.name, item.device.id, 'device')" ng-show="loggedUserAccount">delete</i></td>
-          </tr>
-          <tr ng-repeat-end ng-show="showSensors" ng-repeat="sensor in item.sensors">
-            <td class="mdl-data-table__cell--non-numeric drop-down-item drop-down-table" ng-click="loadSensorList(sensor.name)">{{sensor.name}}<i class="material-icons right" ng-click="confirm(sensor.name, sensor.id, 'sensor')" ng-show="loggedUserAccount">delete</i></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="mdl-cell mdl-cell--6-col card-list-container">
-      <ul class="card-table">
-        <li class="mdl-shadow--2dp device-card-list" ng-repeat="item in selectedItem">
-          <div layout="row" class="item-card">
-            <div ng-show="deviceVisible" ng-init="loadCards(item.device.id, 'device')">
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-name"> {{ item.device.name }} </div>
-              <div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-show="item.device.subscribed == true" ng-click="unsubscribe(item.device, 'device')">Unfollow</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="subscribe(item.device, 'device')" ng-show="item.device.subscribed == false">Follow</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="subscriberPopup(item.device.id, 'device')" ng-show="loggedUserAccount">Followers</button>
-              </div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-id"> Id: {{ item.device.id }}</div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-type">Type: {{ item.device.type }}</div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-description">Description: {{ item.device.description }}</div>
-            </div>
-            <div ng-show="sensorVisible" ng-init="loadCards(item.id, 'sensor')">
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-name"> {{ item.name }} </div>
-              <div>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-show="item.subscribed == true" ng-click="unsubscribe(item, 'sensor')">Unfollow</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="subscribe(item, 'sensor')" ng-show="item.subscribed == false">Follow</button>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="subscriberPopup(item.id, 'sensor')" ng-show="loggedUserAccount">Followers</button>
-              </div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-id"> Id: {{ item.id }}</div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-type">Type: {{ item.sensorType }}</div>
-              <div class="mdl-typography--title mdl-typography--title-color-contrast item-description">Description: {{ item.device.description }}</div>
-            </div>
-          </div>
-          <div>
-            <ul class="profile-card-list">
-              <li class="mdl-card mdl-shadow--2dp profile-payload-card" ng-repeat="item in cardLst">
-                <div layout="row" class="card">
-                  <div class="dp-col">
-                    <img class="profile-pic" src="http://www.gravatar.com/avatar/{{item.emailHash}}"/>
-                  </div>
-                  <div class="body-col">
-                    <div class="mdl-typography--headline mdl-typography--headline-color-contrast user-name">
-                      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="user-name-button" href=""> {{ item.userName }} </a>
+        <div class="device-list">
+            <li class="mdl-shadow--2dp device-list-title">
+                <span class="list-title-text">Tasks</span>
+            </li>
+        </div>
+        <table cellspacing="10"z>
+            <tr class="mdl-shadow--2dp card-list">
+                <td>
+                    <div>
+                        <div layout="row" class="card mdl-shadow--2dp">
+                            <div class="body-col">
+                                <h2 class="group-name">
+                                    Lorem
+                                </h2>
+                            </div>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect task-status" for="checkbox-1">
+                                <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" />
+                                <span class="mdl-checkbox__label">Completed</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="device-title"  ng-click="popup(item)">
-                      <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="device-name-button">{{ item.name }}</a>
+                </td>
+                <td>
+                    <div>
+                        <div layout="row" class="card mdl-shadow--2dp">
+                            <div class="body-col">
+                                <h2 class="group-name">
+                                    Epsum
+                                </h2>
+                            </div>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect task-status" for="checkbox-2">
+                                <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" />
+                                <span class="mdl-checkbox__label">Completed</span>
+                            </label>
+                        </div>
                     </div>
-                    <div class="message">{{ item.msg }}</div>
-                    <span class="news-item-footer time" am-time-ago="item.time"></span>
-                    <span class="news-item-footer payload-id"> {{item.id}} </span>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </div>
+                </td>
+                <td>
+                    <div>
+                        <div layout="row" class="card mdl-shadow--2dp">
+                            <div class="body-col">
+                                <h2 class="group-name">
+                                    N shit
+                                </h2>
+                            </div>
+                            <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect task-status" for="checkbox-3">
+                                <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input" />
+                                <span class="mdl-checkbox__label">Completed</span>
+                            </label>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-tasks" ng-click="createTask()">
+          <i class="material-icons">add</i>
+        </button>
+
+  </div>
   <div class="mdl-cell mdl-cell--1-col"></div>
+</div>
+
+
+
+<div flex="10"></div>
+
 
 </md-content>
