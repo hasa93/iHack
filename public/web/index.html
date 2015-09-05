@@ -1,0 +1,167 @@
+<html lang="en" ng-app="CobWebApp">
+<head>
+	<link rel="icon" type="image/png" href="../img/favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.12/css/ngDialog.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.12/css/ngDialog-theme-default.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.12/css/ngDialog-theme-plain.min.css"/>
+
+    <link rel="stylesheet" href="../css/styles.css" script="text/css"/>
+
+    <!-- Angular Material Dependencies -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.teal-pink.min.css" />
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.3.12/js/ngDialog.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../js/signup.js" type="text/javascript"> </script>
+
+    <meta name="viewport" content="initial-scale=1" />
+</head>
+<body>
+    <!-- Uses a header that contracts as the page scrolls down. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
+        <div class="demo-grid-ruler mdl-grid"></div>
+        <div class="demo-grid-ruler mdl-grid"></div>
+        <!-- Top row, always visible -->
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+            <img class="logo" type="image/png" src="../img/logo.png" height="80" width="80">
+            <span class="mdl-layout-title title">Crew.IO</span>
+            <div class="mdl-layout-spacer"></div>
+            <form name="loginform" method="POST" class="form" action="#">
+                <div class="login-fields">
+                    <i class="material-icons">email</i>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo login-textfield">
+                        <input class="mdl-textfield__input" type="text" id="sample1" name="loginEmail"/>
+                        <label class="mdl-textfield__label login-label" for="sample1">Email</label>
+                    </div>
+                    <i class="material-icons">lock</i>
+                    <div class="mdl-textfield mdl-js-textfield textfield-demo login-textfield">
+                            <input class="mdl-textfield__input" type="password" id="sample1" name="loginPassword"/>
+                        <label class="mdl-textfield__label" for="sample1">Password</label>
+                    </div>
+                    <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect remember-me" for="checkbox-2">
+                        <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input" name="rememberMe"/>
+                        <span class="mdl-checkbox__label">Remember Me</span>
+                    </label>
+                </div>
+                <button  type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent submit-btn">
+                    Login
+                </button>
+            </form>
+        </div>
+        <!-- Bottom row, not visible on scroll -->
+      </header>
+
+      <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="demo-grid-10 mdl-grid">
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+                    <div class="mdl-cell mdl-cell--5-col">
+                        <div class="greet-text">
+                            <h1> Crew is love, crew is life</h1>
+                        </div>
+                        <!-- <div class="demo-grid-ruler mdl-grid"></div>
+                        <div class="demo-grid-ruler mdl-grid"></div>
+                        <div class="demo-grid-ruler mdl-grid"></div> -->
+                       <!--  <iframe width="853" height="480" src="https://www.youtube.com/embed/BaTzxdIRZys?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+                    </div>
+                    <div class="mdl-cell mdl-cell--1-col"></div>
+                    <div class="mdl-cell mdl-cell--5-col signin-form">
+                        <style>
+                        .demo-card-wide.mdl-card {
+                            width: 512px;
+                        }
+
+                        .demo-card-wide > .mdl-card__menu {
+                            color: #fff;
+                        }
+
+                        .demo-card-wide > .mdl-card__title {
+                            color: #fff;
+                            height: 176px;
+                            background: url('../img/iot.jpg') center / cover;
+                        }
+                        </style>
+                        <div class="mdl-card mdl-shadow--2dp demo-card-wide signup-card">
+                            <div class="mdl-card__title">
+                                <h2 class="mdl-card__title-text"></h2>
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                <form ng-controller="LoginCtrl" name="signupForm" ng-submit="submit(signupForm.$valid)" novalidate>
+                                    <i class="material-icons">account_circle</i>
+                                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                                        <input class="mdl-textfield__input" name="firstname" type="text" ng-model="user.firstname" required>
+                                        <label class="mdl-textfield__label" for="sample1" pattern="[a-zA-Z0-9\s]+" >First Name</label>
+                                    </div>
+                                    <br>
+                                    <i class="material-icons">face</i>
+                                    <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                                        <input class="mdl-textfield__input" type="text" ng-model="user.lastname" required/>
+                                        <label class="mdl-textfield__label" for="sample1" pattern="[a-zA-Z0-9\s]+">Last Name</label>
+                                    </div>
+                                    <br>
+                                    <div class="email-block">
+                                        <i class="material-icons">email</i>
+                                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                                            <input class="mdl-textfield__input" type="email" name="email" ng-model="user.email" required/>
+                                            <label class="mdl-textfield__label" for="sample1">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="error-email">
+                                        <p ng-show="signupForm.email.$invalid && !signupForm.email.$pristine" class="help-block">Enter a valid email.</p>
+                                    </div>
+                                    <br>
+
+                                    <div class="pswd-block">
+                                        <i class="material-icons">lock</i>
+                                        <div class="mdl-textfield mdl-js-textfield textfield-demo">
+                                            <input name="phone" id="phone" class="mdl-textfield__input" type="number" ng-model="user.phone" required/>
+                                            <label class="mdl-textfield__label" for="sample1" pattern="[a-zA-Z0-9\s]+">Phone</label>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="pswd-cnfm-block">
+                                        <i class="material-icons">lock</i>
+                                        <div class="mdl-textfield mdl-js-textfield textfield-demo" >
+                                            <input name="password" class="mdl-textfield__input" type="password" ng-model="user.password" ng-minlength="8" required/>
+                                            <label class="mdl-textfield__label" for="sample1" pattern="[a-zA-Z0-9\s]+">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="error-pswd-length">
+                                        <span ng-show="signupForm.password.$error.minlength">
+                                            Password should be at least 8 characters.
+                                        </span>
+                                    </div>
+                                    <div class="signup-card-btn">
+                                        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect signup-btn" ng-click="signup(user)">Sign Up
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <footer class="mdl-mega-footer">
+              <div class="demo-grid-1 mdl-grid">
+                <div class="mdl-cell mdl-cell--4-col"></div>
+                <div class="mdl-cell mdl-cell--4-col"></div>
+                <div class="mdl-cell mdl-cell--4-col"></div>
+              </div>
+              <div class="mdl-mega-footer--bottom-section">
+                <div class="mdl-logo">Title</div>
+                <ul class="mdl-mega-footer--link-list">
+                  <li><a href="#">Help</a></li>
+                  <li><a href="#">Privacy & Terms</a></li>
+                  <li><a href="../web-anon/cobwebapi.html">API Documentation</a></li>
+                </ul>
+              </div>
+            </footer>
+        </div>
+      </main>
+    </div>
+
+</body>
+</html>

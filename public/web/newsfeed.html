@@ -1,0 +1,73 @@
+<!-- MAIN CONTENT -->
+<md-content id="main" layout="vertical" layout-align="center">
+
+<div flex="10"></div>
+
+<div class="demo-grid-1 mdl-grid"  ng-show="dataLoaded">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <ul>
+        <div class="device-list">
+            <li class="mdl-shadow--2dp device-list-title">
+                <span class="list-title-text">Devices</span>
+            </li>
+        </div>
+        <li class="mdl-shadow--2dp card-list" ng-repeat="item in deviceLst">
+            <div layout="row" class="card">
+                <div class="dp-col">
+                    <img class="profile-pic" src="http://www.gravatar.com/avatar/{{item.emailHash}}"/>
+                </div>
+                <div class="body-col">
+                    <div class="mdl-typography--headline mdl-typography--headline-color-contrast user-name">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="user-name-button" href="/web/home.html#/user/{{item.userId}}"> {{ item.userName }} </a>
+                    </div>
+                    <div class="device-title"  ng-click="popup(item)">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="device-name-button">{{ item.name }}</a>
+                    </div>
+                    <div class="message">{{ item.msg }}</div>
+                    <span class="news-item-footer time" am-time-ago="item.time"></span>
+                    <span class="news-item-footer payload-id"> {{item.id}} </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+  </div>
+  <div class="mdl-cell mdl-cell--5-col">
+    <ul>
+        <div class="device-list" ng-show="dataLoaded">
+            <li class="mdl-shadow--2dp device-list-title">
+                <span class="list-title-text">Sensors</span>
+            </li>
+        </div>
+        <li class="mdl-shadow--2dp card-list" ng-repeat="item in sensorLst">
+            <div layout="row" class="card">
+                <div class="dp-col">
+                    <img class="profile-pic" src="http://www.gravatar.com/avatar/{{item.emailHash}}"/>
+                </div>
+                <div class="body-col">
+                    <div class="mdl-typography--headline mdl-typography--headline-color-contrast user-name">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="user-name-button" href="/web/home.html#/user/{{item.userId}}"> {{ item.userName }} </a>
+                    </div>
+                    <div class="sensor-title">
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="sensor-device-name-button" ng-click="popupSensorParentDevice(item)">{{ item.deviceName }}</a>
+                        <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="sensor-name-button" ng-click="popup(item)"> {{item.name}}</a>
+                    </div>
+                    <div class="message">{{ item.msg }}</div>
+                    <span class="news-item-footer time" am-time-ago="item.time"></span>
+                    <span class="news-item-footer payload-id"> {{item.id}} </span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+  </div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+</div>
+
+
+
+<div flex="10"></div>
+
+
+</md-content>

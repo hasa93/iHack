@@ -1,0 +1,97 @@
+<md-content id="main" layout="vertical" layout-align="center">
+
+<div class="demo-grid-1 mdl-grid profile-grid" >
+  <div class="mdl-cell mdl-cell--3-col"></div>
+
+  <div class="mdl-cell mdl-cell--6-col device-list" ng-show="dataLoaded">
+
+    <li class="mdl-card mdl-shadow--2dp notification-list-title">
+        <span class="list-title-text">Friend requests</span>
+    </li>
+
+    <li class="mdl-shadow--2dp device-card-list" ng-hide="friendRequests.length">
+      <div layout="row" class="item-card">
+        <div class="mdl-typography--headline mdl-typography--headline-color-contrast subscription-request">
+          <span id="user-name-button" href=""> No new notifications</span>
+        </div>
+      </div>
+    </li>
+
+    <ul class="profile-card-list"  ng-show="friendRequests.length">
+      <li class="mdl-shadow--2dp device-card-list" ng-repeat="request in friendRequests">
+        <div layout="row" class="item-card">
+          <div class="mdl-typography--headline mdl-typography--headline-color-contrast user-name">
+            <a class="mdl-button mdl-js-button mdl-js-ripple-effect" id="user-name-button" href=""> {{ request.firstname + ' ' + request.lastname}}</a>
+          </div>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent accept-btn" ng-click="acceptFriendRequest(request.userId)">Accept</button>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="deleteFriendRequest(request.userId)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mdl-cell mdl-cell--3-col"></div>
+  <div class="mdl-cell mdl-cell--3-col"></div>
+
+  <div class="mdl-cell mdl-cell--6-col device-list">
+    <li class="mdl-card mdl-shadow--2dp notification-list-title">
+        <span class="list-title-text">Device Subscription requests</span>
+    </li>
+
+    <ul class="profile-card-list">
+
+      <li class="mdl-shadow--2dp device-card-list" ng-hide="devices.length">
+        <div layout="row" class="item-card">
+          <div class="mdl-typography--headline mdl-typography--headline-color-contrast subscription-request">
+            <span id="user-name-button" href=""> No new notifications</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="mdl-shadow--2dp device-card-list" ng-repeat="item in devices">
+        <div ng-repeat="subscriber in item.subscriber">
+          <div layout="row" class="item-card", ng-hide="subscriber.requestSent">
+            <div class="mdl-typography--headline mdl-typography--headline-color-contrast subscription-request">
+              <span id="user-name-button" href=""> {{subscriber.name}} has sent a subscription request to {{ item.name}} sensor</span>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent accept-btn" ng-click="acceptSubscription(subscriber.subscriberId, item.id, subscriber)">Accept</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="rejectSubscription(subscriber.subscriberId, item.id, subscriber)">Reject</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="mdl-cell mdl-cell--3-col"></div>
+  <div class="mdl-cell mdl-cell--3-col"></div>
+
+  <div class="mdl-cell mdl-cell--6-col device-list">
+    <li class="mdl-card mdl-shadow--2dp notification-list-title">
+        <span class="list-title-text">Sensor Subscription requests</span>
+    </li>
+    <ul class="profile-card-list">
+
+      <li class="mdl-shadow--2dp device-card-list" ng-hide="sensors.length">
+        <div layout="row" class="item-card">
+          <div class="mdl-typography--headline mdl-typography--headline-color-contrast subscription-request">
+            <span id="user-name-button" href=""> No new notifications</span>
+          </div>
+        </div>
+      </li>
+
+      <li class="mdl-shadow--2dp device-card-list" ng-repeat="item in sensors">
+        <div ng-repeat="subscriber in item.subscriber">
+          <div layout="row" class="item-card", ng-hide="subscriber.requestSent">
+            <div class="mdl-typography--headline mdl-typography--headline-color-contrast subscription-request">
+              <span id="user-name-button" href=""> {{subscriber.name}} has sent a subscription request to {{ item.name}} sensor</span>
+            </div>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent accept-btn" ng-click="acceptSubscription(subscriber.subscriberId, item.id, subscriber)">Accept</button>
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent follow-btn" ng-click="rejectSubscription(subscriber.subscriberId, item.id, subscriber)">Reject</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mdl-cell mdl-cell--3-col"></div>
+
+</md-content>
