@@ -19,6 +19,30 @@ var express = require('express'),
 
 var app = express();
 
+var passport = require('passport')
+  , GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+passport.use(new GoogleStrategy({
+        clientID: "446579420581-4p5cu6gd2sketrc1gagqnpecq8sprj70.apps.googleusercontent.com",
+        clientSecret: "xgVnZBjDAjG66xCbPTXGBxnl",
+        callbackURL: "http://127.0.0.1:3000/auth/google/return"
+  },
+  function(accessToken, refreshToken, profile, done) {
+        process.nextTick(
+                function () {
+                        return done(null, null);
+                });
+
+  }
+));
+passport.serializeUser(function(user, done) {
+  console.log(user);
+  done(null, 0);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -35,6 +59,8 @@ app.configure(function(){
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
+  app.use(passport.initialize());
+  app.use(passport.session());
   app.use(app.router);
   app.use(express.static(path.join(__dirname, '/public')));
 });
