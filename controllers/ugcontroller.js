@@ -1,7 +1,8 @@
 
 var mongoose = require('mongoose'), 
 	Users = mongoose.model('Users'),
-	Groups = mongoose.model('Groups');
+	Groups = mongoose.model('Groups'),
+	Tasks = mongoose.model('Tasks');
 
 exports.getUsers = function(req, res){
 	Users.find(function(err, rcd){
@@ -35,21 +36,6 @@ exports.getGroup = function(req, res){
 	})
 }
 
-exports.getGroupsByUserId = function(req, res){
-
-	Users.aggregate([
-		{$match : { "_id" : req.params.id }},
-		{$project : {_id : 1, groups : 1}},
-		{$group: {_id : "$_id", groups: {$push: "$groups"}}}
-
-		]).exec(function(err, data){
-			if(!data.length) console.log("User not found!");
-			if(err) console.log(err);
-
-			res.setHeader('content-type', 'application/json');
-			res.send(data);
-		});
-}
 
 exports.createUser= function(req, res){
 
@@ -77,8 +63,7 @@ exports.removeUsersFromGroup = function(req, res){
 	
 	Users.update({"_id": req.params.memId}, {$pull: {groups: req.params.grpId}}, {}, function(err, rcd){
 			if (err) console.log(err);
-
-			console.log("Update success!");
+			
 			res.setHeader('content-type', 'application/json');
 			res.send(rcd);
 	});	
@@ -89,6 +74,52 @@ exports.updateUser = function(req, res){
 
 		if(err) console.log(err);
 
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
+exports.createTask = function(req, res){
+	
+	var task = new Tasks(req.body);
+
+	task.save(function(err,rcd){
+		if(err) console.log(err);
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
+exports.getTasksByUserGroup = function(req, res){
+	Tasks.find({ "group": req.params.groupid, "owner" : req.params.id }, function(err, rcd){
+		if(err) console.log(err);
+
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
+exports.getTasksByUser = function(req, res){
+	Tasks.find({ "owner" : req.params.id }, function(err, rcd){
+		if(err) console.log(err);
+
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
+exports.removeTask = function(req, res){
+
+	Tasks.update({"_id": req.params.id}, {"status":true}, {}, function(err, rcd){
+		if(err) consle.log(err);
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	})
+}
+
+exports.getTasks = function(req, res){
+	Tasks.find(function(err, rcd){
+		if(err) console.log(err);
 		res.setHeader('content-type', 'application/json');
 		res.send(rcd);
 	});
@@ -105,3 +136,4 @@ exports.createGroup = function(req, res){
 	});
 
 }
+
