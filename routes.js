@@ -3,7 +3,7 @@ module.exports = function(app){
 var group = require('./controllers/group');
 
 app.get('/', controllers.index);
-app.get('/api/new', controllers.newapi);
+app.get('/group/new', controllers.newgroup);
 app.get('/resource/new', controllers.newresource);
 
 
