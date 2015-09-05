@@ -2,6 +2,7 @@ module.exports = function(app){
 var controllers = require('./controllers/index');
 var group = require('./controllers/ugcontroller');
 var passport = require('passport');
+var fs = require('fs');
 
 // app.get('/group/new', controllers.newgroup);
 // app.get('/resource/new', controllers.newresource);
@@ -45,8 +46,7 @@ app.get('/auth/google/return',
 
 // File upload
 app.post('/upload-target', function (req, res) {
-		console.log(req.files);
-		var fs = require('fs');
+    console.log(req.files);
 		fs.readFile(req.files.file.path, function (err, data) {
 			var newPath = __dirname + "/uploads/" + req.files.file.name;
 			console.log(newPath);
