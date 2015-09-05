@@ -45,10 +45,13 @@
                 <span class="list-title-text">Chat</span>
             </li>
         </div>
-        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-tasks" ng-click="createTask()">
-          <i class="material-icons">add</i>
-        </button>
-
+        <ul id="messages"></ul>
+        <form action="">
+          <input class="mdl-textfield__input chat-textbox" id="m" autocomplete="off" />
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent chat-button">
+            Send
+          </button>
+        </form>
   </div>
   <div class="mdl-cell mdl-cell--1-col"></div>
 </div>

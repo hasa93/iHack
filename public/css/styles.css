@@ -538,3 +538,13 @@ Search
   top: 50px;
   position: relative;
 }
+
+.chat-textbox {
+  width: 80%!important;
+  height: 50px;
+  float: left;
+}
+
+.chat-button {
+  float: right;
+}
