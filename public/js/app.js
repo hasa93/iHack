@@ -41,8 +41,8 @@ app.controller('GroupCtrl', ['$scope', '$http', '$rootScope', 'ngDialog', functi
 
   $scope.postGroup = function(gname){
     $http.post('/api/group/create', {name: gname});
-    $scope.groupLst.push({name: gname, _id: cardCounter});
-    groupCounter++;
+    $scope.groupLst.push({name: gname, _id: groupCounter});
+    // groupCounter++;
     $rootScope.dataLoaded = true;
   };
 
@@ -50,7 +50,7 @@ app.controller('GroupCtrl', ['$scope', '$http', '$rootScope', 'ngDialog', functi
     ngDialog.open({ template: 'createGroup.html', className: 'ngdialog-theme-default', scope: $scope});
   };
 
-  $scope.removeTask = function(id){
+  $scope.removeGroup = function(id){
     console.log(id);
     $http.get('/api/group/'+ id +'/delete').success(function(data) {});
     _.remove($scope.groupLst, function(request){
