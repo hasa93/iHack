@@ -8,6 +8,13 @@
 
     <link rel="stylesheet" href="../css/styles.css" script="text/css"/>
 
+    <style>
+	#signinlink a{
+		text-decoration: none;
+		color: rgba(0, 0, 0, 0.54); 
+	}
+    </style>
+
     <!-- Angular Material Dependencies -->
     <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.teal-pink.min.css" />
     <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
@@ -90,6 +97,9 @@
                                 <h2 class="mdl-card__title-text"></h2>
                             </div>
                             <div class="mdl-card__supporting-text">
+				<div id="signinlink"><a href="/auth/google"><h4 align="center">Sign in with <img src="../img/google.png" height="40px" width="40px"></h4></a></div>
+				<hr>
+				<h4 align="center">or Sign Up</h4>
                                 <form ng-controller="LoginCtrl" name="signupForm" ng-submit="submit(signupForm.$valid)" novalidate>
                                     <i class="material-icons">account_circle</i>
                                     <div class="mdl-textfield mdl-js-textfield textfield-demo">
