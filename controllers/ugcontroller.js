@@ -62,10 +62,35 @@ exports.createUser= function(req, res){
 	});
 }
 
-exports.addUserToGroup = function(req, res){
-	group.find({"_id" : req.params.groupId}, function(err,rcd){
+exports.addUsersToGroup = function(req, res){
+	
+	Users.update({"_id": req.params.memId}, {$push: {groups: req.params.grpId}}, {}, function(err, rcd){
+			if (err) console.log(err);
+
+			console.log("Update success!");
+			res.setHeader('content-type', 'application/json');
+			res.send(rcd);
+	});	
+}
+
+exports.removeUsersFromGroup = function(req, res){
+	
+	Users.update({"_id": req.params.memId}, {$pull: {groups: req.params.grpId}}, {}, function(err, rcd){
+			if (err) console.log(err);
+
+			console.log("Update success!");
+			res.setHeader('content-type', 'application/json');
+			res.send(rcd);
+	});	
+}
+
+exports.updateUser = function(req, res){
+	Users.update({"_id" : req.params.id}, req.body, {}, function(err, rcd){
+
 		if(err) console.log(err);
-		
+
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
 	});
 }
 
