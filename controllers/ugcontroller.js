@@ -108,6 +108,15 @@ exports.getTasksByUser = function(req, res){
 	});
 }
 
+exports.getTasksByGroup = function(req, res){
+	Tasks.find({"group" : req.params.id}, function(err, rcd){
+		if(err) console.log(err);
+
+		res.setHeader('content-type','application/json');
+		res.send(rcd);
+	});
+}
+
 exports.removeTask = function(req, res){
 
 	Tasks.update({"_id": req.params.id}, {"status":true}, {}, function(err, rcd){
