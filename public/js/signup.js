@@ -1,4 +1,4 @@
-var app = angular.module('CobWebApp', ['ngDialog']);
+var app = angular.module('CrewApp', ['ngDialog']);
 
 app.controller('LoginCtrl', ['$scope', '$http', 'ngDialog', function($scope, $http, ngDialog) {
   console.log("login ctrl fired");

@@ -1,0 +1,7 @@
+<form name="createGroup" class="create-task-form" novalidate>
+  <div class="mdl-textfield mdl-js-textfield popup-task-name">
+    <input class="mdl-textfield__input" type="text" ng-model="group.name" required/>
+    <label class="mdl-textfield__label">Name </label>
+  </div>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent create-button" ng-click="postGroup(group.name); closeThisDialog()">Create</button>
+</form>

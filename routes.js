@@ -41,7 +41,7 @@ app.get('/auth/google',
 app.get('/auth/google/return', 
   passport.authenticate('google', { failureRedirect: '/web/home.html#/groups' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/web/home.html#/groups');
   });
 
 // File upload

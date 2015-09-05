@@ -229,6 +229,8 @@ md-card.news-item{
 
 .logo {
   margin-bottom: 40px;
+  left: 176px;
+  position: relative;
 }
 
 .submit-btn {
@@ -551,4 +553,14 @@ Search
 
 #messages {
   list-style-type: none;
+}
+
+.devideandcounquer {
+  text-align: center;
+}
+
+.group-delete-button{
+  float: right;
+  top: 76px;
+  position: relative;
 }

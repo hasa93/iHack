@@ -22,11 +22,17 @@
                                     {{group.name}}
                                 </h2>
                             </div>
+                            <div class="group-delete-button" ng-click="removeTask(task._id)">
+                              <i class="material-icons">delete</i>
+                            </div>
                         </div>
                     </a>
                 </td>
             </tr>
         </table>
+        <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored add-tasks" ng-click="createGroup()">
+          <i class="material-icons">add</i>
+        </button>
 
   </div>
   <div class="mdl-cell mdl-cell--1-col"></div>

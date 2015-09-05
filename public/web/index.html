@@ -1,4 +1,4 @@
-<html lang="en" ng-app="CobWebApp">
+<html lang="en" ng-app="CrewApp">
 <head>
 	<link rel="icon" type="image/png" href="../img/favicon.ico" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -34,8 +34,8 @@
         <!-- Top row, always visible -->
         <div class="mdl-layout__header-row">
           <!-- Title -->
-            <!-- <img class="logo" type="image/png" src="../img/logo.png" height="80" width="80"> -->
-            <span class="mdl-layout-title title">Crew.IO</span>
+            <img class="logo" type="image/png" src="../img/logo.png" height="80" width="80">
+            <span class="mdl-layout-title title">rew.IO</span>
             <div class="mdl-layout-spacer"></div>
             <form name="loginform" method="POST" class="form" action="#">
                 <div class="login-fields">
@@ -68,7 +68,9 @@
                     <div class="mdl-cell mdl-cell--1-col"></div>
                     <div class="mdl-cell mdl-cell--5-col">
                         <div class="greet-text">
-                            <h1> Crew is love, crew is life</h1>
+                            <h1> Connect </h1>
+                            <h1> Communicate</h1>
+                            <h1> Coordinate</h1>
                         </div>
                         <!-- <div class="demo-grid-ruler mdl-grid"></div>
                         <div class="demo-grid-ruler mdl-grid"></div>
@@ -98,8 +100,8 @@
                             </div>
                             <div class="mdl-card__supporting-text">
 				<div id="signinlink"><a href="/auth/google"><h4 align="center">Sign in with <img src="../img/google.png" height="40px" width="40px"></h4></a></div>
-				<hr>
-				<h4 align="center">or Sign Up</h4>
+                <h4 class="devideandcounquer">Or</h4>
+				<h4 align="center">Sign Up</h4>
                                 <form ng-controller="LoginCtrl" name="signupForm" ng-submit="submit(signupForm.$valid)" novalidate>
                                     <i class="material-icons">account_circle</i>
                                     <div class="mdl-textfield mdl-js-textfield textfield-demo">
@@ -165,7 +167,6 @@
                 <ul class="mdl-mega-footer--link-list">
                   <li><a href="#">Help</a></li>
                   <li><a href="#">Privacy & Terms</a></li>
-                  <li><a href="../web-anon/cobwebapi.html">API Documentation</a></li>
                 </ul>
               </div>
             </footer>
