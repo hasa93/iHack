@@ -1,6 +1,7 @@
 /iisnode/
 web.config
 node_modules
+data
 *.log
 *.swp
 *.vim

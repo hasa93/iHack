@@ -1,18 +1,18 @@
 module.exports = {
   development: {
-    db: 'mongodb://localhost/mobilitytracker',
+    db: 'mongodb://localhost/glassnots',
     app: {
       name: 'Nodejs Express Mongoose Demo'
     }
   },
   test: {
-    db: 'mongodb://localhost/mobilitytracker',
+    db: 'mongodb://localhost/glassnots',
     app: {
       name: 'Nodejs Express Mongoose Demo'
     }
   },
   production: {
-    db: 'mongodb://localhost/mobilitytracker',
+    db: 'mongodb://localhost/glassnots',
     app: {
       name: 'Nodejs Express Mongoose Demo'
     }
