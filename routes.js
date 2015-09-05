@@ -38,4 +38,19 @@ app.get('/auth/google/return',
   function(req, res) {
     res.redirect('/');
   });
+
+// File upload
+app.post('/upload-target', function (req, res) {
+		console.log(req.files);
+		var fs = require('fs');
+		fs.readFile(req.files.file.path, function (err, data) {
+			var newPath = __dirname + "/uploads/" + req.files.file.name;
+			console.log(newPath);
+			fs.writeFile(newPath, data, function(err) {
+				console.log('writing data');
+				res.redirect("back");
+			});
+		});
+	});
+
 };
