@@ -2,7 +2,6 @@ module.exports = function(app){
 var controllers = require('./controllers/index');
 var group = require('./controllers/ugcontroller');
 
-app.get('/', controllers.index);
 // app.get('/group/new', controllers.newgroup);
 // app.get('/resource/new', controllers.newresource);
 
