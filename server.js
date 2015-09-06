@@ -102,4 +102,8 @@ var ioApp = io(http);
 
 ioApp.on('connection', function(socket){
   console.log("Connected!");
+  socket.on('chat msg', function(msg){
+    console.log(msg);
+    ioApp.emit('chat msg', msg);
+  });
 }); 

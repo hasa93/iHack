@@ -548,3 +548,7 @@ Search
 .chat-button {
   float: right;
 }
+
+#messages {
+  list-style-type: none;
+}

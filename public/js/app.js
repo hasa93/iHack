@@ -91,7 +91,21 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
 
   $scope.taskLst = [];
   var cardCounter = 0;
-  var socket = io();
+  
+  function sendMessage()
+  {
+    var socket = io();
+
+    $('form').submit(function(){
+      socket.emit('chat msg', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+
+    socket.on('chat msg', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
+  }
 
   $scope.postTask = function(name){
     $http.post('/api/task/create', {task: name, group: $routeParams.id});
@@ -106,6 +120,7 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
 
   $scope.removeTask = function(id){
     console.log(id);
+    $http.get('/api/task/'+ id +'/delete').success(function(data) {});
     _.remove($scope.taskLst, function(request){
       return request._id == id;
     });
@@ -121,6 +136,7 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
   }
 
   getTasks($routeParams.id);
+  sendMessage();
   
 }]);
 
