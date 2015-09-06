@@ -68,7 +68,6 @@ app.configure(function(){
 
 require('./db');
 
-var controllers = require('./controllers');
 
 app.configure('development', function(){
   app.use(express.errorHandler());

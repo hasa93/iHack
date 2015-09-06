@@ -1,5 +1,4 @@
 module.exports = function(app){
-var controllers = require('./controllers/index');
 var group = require('./controllers/ugcontroller');
 var passport = require('passport');
 var fs = require('fs');
