@@ -14,7 +14,8 @@
 
 var express = require('express'),
   http = require('http'),
-  path = require('path');
+  path = require('path'),
+  io = require('socket.io')(http);
   // engine = require('ejs-locals');
 
 var app = express();
