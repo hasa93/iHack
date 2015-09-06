@@ -564,3 +564,14 @@ Search
   top: -27px;
   position: relative;
 }
+
+#signinlink a{
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.54); 
+}
+
+.minilogo {
+  position: relative;
+  top: 3px;
+  left: 573px;
+}
