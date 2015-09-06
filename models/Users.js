@@ -8,8 +8,7 @@ var mongoose = require('mongoose'),
 
 var UserSchema = new Schema({
 	username : {type : String},
-	groups : {type: Array},
-	tasks : {type: Array}
+	groups : {type: Array}	
 });
 
 mongoose.model('Users', UserSchema);
