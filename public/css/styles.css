@@ -512,11 +512,6 @@ Search
   margin-left: 76px;
 }
 
-.searchbox {
-  position: relative;
-  right: 100px;
-}
-
 .typeahead-dp {
   float: left;
 }
@@ -563,6 +558,7 @@ Search
   float: right;
   top: -27px;
   position: relative;
+  color: white;
 }
 
 #signinlink a{
