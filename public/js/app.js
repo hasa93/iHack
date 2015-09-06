@@ -91,6 +91,7 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
 
   $scope.taskLst = [];
   var cardCounter = 0;
+  var socket = io();
 
   $scope.postTask = function(name){
     $http.post('/api/task/create', {task: name, group: $routeParams.id});
@@ -120,8 +121,7 @@ app.controller('CardsCtrl', ['$scope', '$http', '$routeParams', '$rootScope', 'n
   }
 
   getTasks($routeParams.id);
-
-
+  
 }]);
 
 app.controller('NotificationCtrl', ['$rootScope', '$scope', '$http', 'ngDialog', function($rootScope, $scope, $http, ngDialog) {
