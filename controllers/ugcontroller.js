@@ -156,7 +156,7 @@ exports.createGroup = function(req, res){
 }
 
 exports.deleteGroup = function(req, res){
-	Tasks.remove({"_id" : req.params.id }, function(err, rcd){
+	Groups.remove({"_id" : req.params.id }, function(err, rcd){
 		if(err) console.log(err);
 				
 		res.setHeader('content-type', 'application/json');
