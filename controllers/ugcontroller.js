@@ -138,7 +138,6 @@ exports.deleteTask = function(req, res){
 	Tasks.remove({"_id" : req.params.id }, function(err, rcd){
 		if(err) console.log(err);
 
-		console.log("Removed!");
 		res.setHeader('content-type', 'application/json');
 		res.send(rcd);
 	});
@@ -156,3 +155,18 @@ exports.createGroup = function(req, res){
 
 }
 
+exports.deleteGroup = function(req, res){
+	Tasks.remove({"_id" : req.params.id }, function(err, rcd){
+		if(err) console.log(err);
+				
+		res.setHeader('content-type', 'application/json');
+		res.send(rcd);
+	});
+}
+
+exports.getUsersByGroup = function(req, res){
+	Users.find({"groups": { $in:[ req.params.id ]}}, function(err, rcd){
+		if(err) console.log(err);
+		res.send(rcd);
+	});
+}

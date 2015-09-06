@@ -21,11 +21,14 @@ app.post('/api/group/remove/:grpId/:memId', group.removeUsersFromGroup);
 app.get('/api/group/:id/get', group.getGroup);
 app.get('/api/group/list', group.getGroups);
 app.get('/api/group/:id/tasks', group.getTasksByGroup);
+app.get('/api/group/:id/members', group.getUsersByGroup);
+app.get('/api/group/:id/delete', group.deleteGroup);
 
 app.post('/api/task/create', group.createTask);
 app.get('/api/task/:id/remove', group.removeTask);
 app.get('/api/task/list', group.getTasks);
 app.get('/api/task/:id/delete', group.deleteTask);
+
 
 app.get('/auth/google',
   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }),
